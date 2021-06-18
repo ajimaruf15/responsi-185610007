@@ -1,5 +1,7 @@
-FROM nginx:1.11-alpine 
-COPY index.html /usr/share/nginx/html/
+FROM centos:latest
+COPY index.html /var/www/html/
 MAINTAINER nururri
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]
+CMD ["/usr/sbin/httpd/","-D", "FOREGROUND"]
+RUN yum -y install httpd
